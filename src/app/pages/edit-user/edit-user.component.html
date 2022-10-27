@@ -1,0 +1,89 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" routerLink="/home">ESC<span class="special">Avia</span></a>
+        <div class="container-fluidcollapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" routerLink="/user">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" routerLink="/favorites">Favorites</a>
+                </li>
+            </ul>
+            <li class="avatar nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center" [ngClass]="{'show' : showMenuEnabled}"
+                    id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false"
+                    (click)="showMenu()">
+                    <img [src]="user.avatar" class="rounded-circle small-ava" height="50" width="50"  alt="Avatar" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu" [ngClass]="{'show' : showMenuEnabled}"
+                    aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" routerLink="/profile">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="/edit">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+    </nav>
+</header>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                    width="150px" height="150px" [src]="user.avatar"><span class="font-weight-bold">{{user.firstName}}</span><span
+                    class="text-black-50">{{user.login}}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <label class="labels">First Name</label>
+                        <input type="text" class="form-control" placeholder="first name" value=""
+                            [(ngModel)]="user.firstName">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Middle Name</label>
+                        <input type="text" class="form-control" value="" placeholder="middle name"
+                            [(ngModel)]="user.middleName">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Last Name</label>
+                        <input type="text" class="form-control" value="" placeholder="last name"
+                            [(ngModel)]="user.lastName">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Login</label><input type="text" class="form-control"
+                            placeholder="enter login" value="" [(ngModel)]="user.login"></div>
+                    <div class="col-md-12"><label class="labels">Old Password</label><input type="password"
+                            class="form-control" placeholder="enter old password" value="" [(ngModel)]="oldPassword"></div>
+                    <div class="col-md-12"><label class="labels">New Password</label><input type="password"
+                            class="form-control" placeholder="enter new password" value="" [(ngModel)]="newPassword"></div>
+                    <div class="col-md-12"><label class="labels">Confirm New Password</label><input type="password"
+                            class="form-control" placeholder="confirm password" value="" [(ngModel)]="confirmPassword"></div>
+
+                </div>
+
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" (click)="onSave()">Save
+                        Profile</button></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience" >
+                    <label for="file"><i class="fa-solid fa-cloud-arrow-up"></i>  Upload new avatar</label>
+                    <input type="file" name="file" id="file" class="profileInputBox avatar" (change)="onFileUpload($event)"/>
+                </div><br>
+            </div>
+        </div>
+    </div>
+</div>

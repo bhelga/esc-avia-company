@@ -1,0 +1,35 @@
+<div class="animated" style="display: flex; justify-content:center;">
+    <div class="card">
+        <div class="card-header">
+            <img [src]="flight.avatar"
+                alt="rover" />
+        </div>
+        <div class="card-body" (click)="onCardClick()">
+            <div style="display: flex;">
+                <span class="tag tag-teal">{{flight.flightClass}}</span>
+                <i class="fa-duotone fa-copy" style="margin-left: 1em;" (click)="copyFlightId($event)"></i>
+            </div>
+            
+            <h4>
+                {{flight.price}}$ — {{flight.shippingDatetime | date:'dd/MM/yy HH:mm:ss'}}
+            </h4>
+            <p>
+                <i class="fa-duotone fa-copy" (click)="copyPlaneId($event)"></i><strong>  PlaneId</strong> : {{flight.planeId}}<br>
+                <i class="fa-duotone fa-copy" (click)="copyRouteId($event)"></i><strong>  RouteId</strong> : {{flight.routeId}}<br>
+                <strong>Route Number</strong> : {{flight.routeNumber}}
+            </p>
+        </div>
+        <ul>
+            <li (click)="onCardClick()"><a>
+                    <i class="fa-sharp fa-solid fa-user-pen"></i>
+                    Edit</a></li>
+            <li (click)="onDelete()"><a>
+                    <i class="fa-solid fa-user-minus"></i>
+                    Delete</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="editMode">
+        <app-edit-flight [flight]="flight" (closeEditor)="onCardClose()"></app-edit-flight>
+    </div>
+</div>

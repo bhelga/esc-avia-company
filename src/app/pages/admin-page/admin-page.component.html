@@ -1,0 +1,177 @@
+<div class="sidebar__sections">
+    <ul>
+        <li (click)="onPassengerIcon()"><a>
+                <i class="fa-sharp fa-solid fa-users"></i>
+                Passengers</a></li>
+        <li (click)="onFlightIcon()"><a>
+                <i class="fa-solid fa-business-time"></i>
+                Flights</a>
+        </li>
+        <li (click)="onPlaneIcon()"><a>
+                <i class="fa-solid fa-plane"></i>
+                Planes</a></li>
+        <li (click)="onRouteIcon()"><a>
+                <i class="fa-solid fa-route"></i>
+                Routes</a></li>
+        <li (click)="onBookingIcon()"><a>
+            <i class="fa-solid fa-book"></i>
+                Booking</a></li>
+        <li class="last-child-li"><a (click)="onExitClick()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Exit</a></li>
+    </ul>
+</div>
+
+<div class="container" *ngIf="passengerActive">
+    <h2 class="title">Users</h2>
+    <div>
+        <div style="display:flex; flex-direction: column; align-items:center;">
+            <button class="add-button" (click)="onCreatePassenger()">Add new user</button>
+            <div class="box">
+                <select [(ngModel)]="passengerSort" (change)="onPassengerPageClick($event)">
+                  <option value="id">id</option>
+                  <option value="firstName">First Name</option>
+                  <option value="middleName">Middle Name</option>
+                  <option value="lastName">Last Name</option>
+                  <option value="login">Login</option>
+                  <option value="role">Role</option>
+                </select>
+            </div>
+        </div>
+        <app-edit-passenger *ngIf="createPassenger" (closeEditor)="onCreatePassenger()"></app-edit-passenger>
+    </div>
+    <div style="display: flex; flex-direction:column;">
+        <div class="float-content">
+            <app-passenger-card *ngFor="let passenger of passengers" [passenger]="passenger"></app-passenger-card>
+        </div>
+        <div class="pagination">
+            <button (click)="onPassengerPageClick($event)"
+                *ngFor="let item of [].constructor(passengerPagesCount); let i = index" [id]="i + 1" class="btn">{{i +
+                1}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="flightActive">
+    <h2 class="title">Flights</h2>
+    <div>
+        <div style="display:flex; flex-direction: column; align-items:center;">
+            <button class="add-button" (click)="onCreateFlight()">Add new flight</button>
+            <div class="box">
+                <select [(ngModel)]="flightSort" (change)="onFlightPageClick($event)">
+                  <option value="id">id</option>
+                  <option value="routeNumber">Route Number</option>
+                  <option value="routeId">Route Id</option>
+                  <option value="planeId">Plane Id</option>
+                  <option value="shippingDatetime">Shipping Datetime</option>
+                  <option value="flightClass">Flight class</option>
+                  <option value="price">Price</option>
+                </select>
+            </div>
+        </div>
+        <app-edit-flight *ngIf="createFlight" (closeEditor)="onCreateFlight()"></app-edit-flight>
+    </div>
+    <div style="display: flex; flex-direction:column;">
+        <div class="float-content">
+            <app-flight-card *ngFor="let flight of flights" [flight]="flight"></app-flight-card>
+        </div>
+        <div class="pagination">
+            <button (click)="onFlightPageClick($event)"
+                *ngFor="let item of [].constructor(flightPagesCount); let i = index" [id]="i + 1" class="btn">{{i +
+                1}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="planeActive">
+    <h2 class="title">Planes</h2>
+    <div>
+        <div style="display:flex; flex-direction: column; align-items:center;">
+            <button class="add-button" (click)="onCreatePlane()">Add new plane</button>
+            <div class="box">
+                <select [(ngModel)]="planeSort" (change)="onPlanePageClick($event)">
+                  <option value="id">id</option>
+                  <option value="name">Name</option>
+                  <option value="type">Type</option>
+                  <option value="seatsAmount">Seats Amount</option>
+                  <option value="specifications.developer">Developer</option>
+                  <option value="specifications.producer">Producer</option>
+                  <option value="specifications.startOfOperation">Start of operation</option>
+                  <option value="specifications.length">Length</option>
+                  <option value="specifications.wingspan">Wingspan</option>
+                  <option value="specifications.numberOfEngines">Number of engines</option>
+                  <option value="specifications.engineType">Engine type</option>
+                  <option value="specifications.engineThrust">Engine thrust</option>
+                  <option value="specifications.maximumFlightSpeed">Maximum flight speed</option>
+                </select>
+            </div>
+        </div>
+        <app-edit-plane *ngIf="createPlane" (closeEditor)="onCreatePlane()"></app-edit-plane>
+    </div>
+    <div style="display: flex; flex-direction:column;">
+        <div class="float-content">
+            <app-plane-card *ngFor="let plane of planes" [plane]="plane"></app-plane-card>
+        </div>
+        <div class="pagination">
+            <button (click)="onPlanePageClick($event)"
+                *ngFor="let item of [].constructor(planePagesCount); let i = index" [id]="i + 1" class="btn">{{i +
+                1}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="routeActive">
+    <h2 class="title">Route</h2>
+    <div>
+        <div style="display:flex; flex-direction: column; align-items:center;">
+            <button class="add-button" (click)="onCreateRoute()">Add new route</button>
+            <div class="box">
+                <select [(ngModel)]="routeSort" (change)="onRoutePageClick($event)">
+                  <option value="id">id</option>
+                  <option value="duration">Duration</option>
+                  <option value="landingPoint">Landing point</option>
+                  <option value="pointOfDeparture">Point of departure</option>
+                </select>
+            </div>
+        </div>
+        <app-edit-route *ngIf="createRoute" (closeEditor)="onCreateRoute()"></app-edit-route>
+    </div>
+    <div style="display: flex; flex-direction:column;">
+        <div class="float-content">
+            <app-route-card *ngFor="let route of routes" [route]="route"></app-route-card>
+        </div>
+        <div class="pagination">
+            <button (click)="onRoutePageClick($event)"
+                *ngFor="let item of [].constructor(routePagesCount); let i = index" [id]="i + 1" class="btn">{{i +
+                1}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="bookingActive">
+    <h2 class="title">Booking</h2>
+    <div>
+        <div style="display:flex; flex-direction: column; align-items:center;">
+            <button class="add-button" (click)="onCreateBooking()">Add new booking</button>
+            <div class="box">
+                <select [(ngModel)]="bookingSort" (change)="onBookingPageClick($event)">
+                  <option value="id">id</option>
+                  <option value="flightId">Flight Id</option>
+                  <option value="passengerId">Passenger Id</option>
+                  <option value="status">Status</option>
+                </select>
+            </div>
+        </div>
+        <app-edit-booking *ngIf="createBooking" (closeEditor)="onCreateBooking()"></app-edit-booking>
+    </div>
+    <div style="display: flex; flex-direction:column;">
+        <div class="float-content">
+            <app-booking-card *ngFor="let booking of bookings" [booking]="booking"></app-booking-card>
+        </div>
+        <div class="pagination">
+            <button (click)="onBookingPageClick($event)"
+                *ngFor="let item of [].constructor(bookingPagesCount); let i = index" [id]="i + 1" class="btn">{{i +
+                1}}</button>
+        </div>
+    </div>
+</div>

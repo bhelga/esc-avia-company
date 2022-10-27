@@ -1,0 +1,538 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Exo';
+
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+  background: #e9e9e9;
+  overflow-x: hidden;
+  padding-top: 90px;
+  font-family: 'Exo', sans-serif;
+  margin: 0 100px;
+}
+
+.profile-header {
+  background: #fff;
+  width: 100%;
+  display: flex;
+  height: 190px;
+  position: relative;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-img {
+  float: left;
+  width: 340px;
+  height: 200px;
+}
+
+.profile-img img {
+  border-radius: 50%;
+  height: 230px;
+  width: 230px;
+  border: 5px solid #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 50px;
+  top: 20px;
+  z-index: 5;
+  background: #fff;
+}
+
+.profile-nav-info {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.profile-nav-info h3 {
+  font-variant: small-caps;
+  font-size: 2rem;
+  font-family: 'Exo', sans-serif;
+  font-weight: bold;
+}
+
+.profile-nav-info .address {
+  display: flex;
+  font-weight: bold;
+  color: #777;
+}
+
+.profile-nav-info .address p {
+  margin-right: 5px;
+}
+
+.profile-option {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  outline: none;
+  background: #0f2a53;
+}
+
+.profile-option:hover {
+  background: #fff;
+  border: 1px solid #0f2a53;
+}
+.profile-option:hover .notification i {
+  color: #0f2a53;
+}
+
+.profile-option:hover span {
+  background: #0f2a53;
+}
+
+.profile-option .notification i {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.profile-option .notification .alert-message {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #fff;
+  color: #0f2a53;
+  border: 1px solid #0f2a53;
+  padding: 5px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.main-bd {
+  width: 100%;
+  display: flex;
+  padding-right: 15px;
+}
+
+.profile-side {
+  width: 300px;
+  background: #fff;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  padding: 90px 30px 20px;
+  font-family: 'Exo', sans-serif;
+  margin-left: 10px;
+  z-index: 99;
+}
+
+.profile-side p {
+  margin-bottom: 7px;
+  color: #333;
+  font-size: 14px;
+}
+
+.profile-side p i {
+  color: #0f2a53;
+  margin-right: 10px;
+}
+
+.mobile-no i {
+  transform: rotateY(180deg);
+  color: #0f2a53;
+}
+
+.profile-btn {
+  display: flex;
+}
+
+a.chatbtn,
+a.createbtn {
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 3px;
+  background: #0f2a53;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 5px 2px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 10px;
+  transition: background 0.3s ease-in-out;
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+}
+
+a.chatbtn:hover,
+a.createbtn:hover {
+  background: #455872;
+}
+
+a.chatbtn i,
+a.createbtn i {
+  margin-right: 5px;
+}
+
+.user-rating {
+  display: flex;
+}
+
+.user-rating h3 {
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-right: 5px;
+  letter-spacing: 1px;
+  color: #666;
+}
+
+.user-rating .no-of-user-rate {
+  font-size: 0.9rem;
+}
+
+.rate {
+  padding-top: 6px;
+}
+
+.rate i {
+  font-size: 0.9rem;
+  color: rgb(98, 53, 46);
+}
+
+.nav {
+  width: 100%;
+  z-index: -1;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  height: 40px;
+  background: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nav ul li {
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-body {
+  width: 100%;
+  z-index: -1;
+}
+
+.tab {
+  padding: 20px;
+  
+  text-align: center;
+}
+
+#see-more-bio,
+#see-less-bio {
+  color: blue;
+  cursor: pointer;
+  text-transform: lowercase;
+}
+.tab h1 {
+    font-family: 'Exo', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.empty {
+    text-align: center;
+    margin-top: 3em;
+    font-size: larger;
+    font-family: 'Exo', sans-serif;
+}
+
+.btn--form {
+    padding: .5rem 2.5rem;
+    font-size: .95rem;
+    font-family: 'Exo', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background: #0f2a53;
+    border-radius: remy(35px);
+    margin-right: 10px;
+
+    &:focus,
+    &:hover {
+        background: lighten(#0f2a53, 13%);
+    }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+.special {
+    color: #bb8e3b !important;
+}
+
+.navbar-brand {
+    margin-left: 10%;
+}
+
+header {
+    justify-content: space-between;
+    font-size: large;
+    font-family: 'Exo', sans-serif;
+}
+
+.search {
+    margin-right: 10%;
+}
+
+.mr-sm-2, .mx-sm-2 {
+    margin-right: 0.5rem !important;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 1.5rem + 0px);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #08429852;
+    background-clip: padding-box;
+    border: 0px solid #ced4da;
+    border-radius: 10px;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+#select-class {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.btn {
+    width: 100%;
+    display: inline-block;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 0px solid transparent;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    border-radius: 0;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.btn-secondary {
+    color: #1a1a1a;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,.55);
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+.align-items-center {
+    align-items: center!important;
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: .5rem 0;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .5rem;
+}
+
+.dropdown-menu {
+    color: #4f4f4f;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 0;
+    box-shadow: 0 2px 15px -3px rgba(0,0,0,.07),0 10px 20px -2px rgba(0,0,0,.04);
+    font-size: large;
+}
+
+li {
+    margin: 5px 15px 10px 5px;
+    list-style: none;
+}
+
+.avatar {
+    margin-right: 10%;
+}
+
+.navbar-nav .dropdown-menu {
+    position: static;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.dropdown-menu>li:first-child, .dropdown-menu>li:first-child .dropdown-item {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.img-background {
+    background-image: url(https://images.pexels.com/photos/6707628/pexels-photo-6707628.jpeg);
+    height: 1000px;
+    background-size: contain;
+}
+
+h1 {
+    font-weight: 1000;
+    color: rgb(98, 53, 46);
+}
+
+h4 {
+    color: #6f564b;
+}
+
+
+:not(.btn-check) + .btn:hover, .btn:first-child:hover {
+    color:rgb(224, 224, 224);
+    background-color:#455872;
+}
+
+.bg-white {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Not too many browser support this yet but it's good to add! */
+@media (prefers-contrast: high) {
+  .orb-canvas {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .overlay {
+    padding: 8rem 4rem;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .overlay {
+    padding: 4rem;
+    height: auto;
+  }
+
+  .overlay__title {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .overlay__description {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .overlay {
+    padding: 1.5rem;
+  }
+
+  .overlay__btns {
+    flex-wrap: wrap;
+  }
+
+  .overlay__btn {
+    width: 100%;
+    font-size: 0.75rem;
+    margin-right: 0;
+  }
+
+  .overlay__btn:first-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.pagg {
+    color: white;
+    font-family: 'Exo';
+    margin: 20px;
+}
+
+.flight-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tab {
+    margin: 0 11.8em;
+}

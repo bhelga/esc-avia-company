@@ -1,0 +1,96 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" routerLink="/home">ESC<span class="special">Avia</span></a>
+        <div class="container-fluidcollapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" routerLink="/user">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" routerLink="/favorites">Favorites</a>
+                </li>
+            </ul>
+            <li class="avatar nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center" [ngClass]="{'show' : showMenuEnabled}"
+                    id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false"
+                    (click)="showMenu()">
+                    <img [src]="user.avatar" class="rounded-circle" height="40" width="40" alt="Avatar" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu" [ngClass]="{'show' : showMenuEnabled}"
+                    aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" routerLink="/profile">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="/edit">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="profile-header">
+      <div class="profile-img">
+        <img [src]="user.avatar" width="200" alt="Profile Image">
+      </div>
+      <div class="profile-nav-info">
+        <h3 class="user-name">{{user.firstName}} {{user.middleName}} {{user.lastName}}</h3>
+        <div class="address">
+          <p id="state" class="state">{{user.role}}</p>
+        </div>
+  
+      </div>
+      <div class="profile-option">
+        <div class="notification">
+          <i class="fa fa-bell"></i>
+          <span class="alert-message">3</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="main-bd">
+      <div class="left-side">
+        <div class="profile-side">
+          <p class="mobile-no"><i class="fa-solid fa-address-card"></i> {{user.login}}</p>
+          <div class="user-bio">
+            <h3>About</h3>
+            <p class="bio">
+              Hi, I'm {{user.login}}! And I am {{user.role}} on this site! Nice to meet ya, honey :)
+            </p>
+          </div>
+          <div class="profile-btn">
+            <a class="btn btn--form chatbtn" routerLink="/edit">Edit</a>
+            <a class="btn btn--form createbtn" routerLink="/favorites">Favorites</a>
+          </div>
+        </div>
+  
+      </div>
+      <div class="right-side">
+  
+        <div class="nav">
+          <ul>
+            <li class="user-post active">My booking</li>
+          </ul>
+        </div>
+        <div class="profile-body">
+          <div class="profile-posts tab">
+            <div *ngIf="flights.length" class="container card-container flight-container">
+                <app-flight-info-card *ngFor="let flight of flights | paginate: {itemsPerPage: count, currentPage: page }" [bookingMode]="true" [flight]="flight.flight" [booking]="flight.booking"></app-flight-info-card>
+                <div class="text-right">
+                    <pagination-controls class="pagg" (pageChange)="page = $event"></pagination-controls>
+                  </div>
+            </div>
+
+            <div *ngIf="!flights.length">
+                <p style="color: white;">There are no offers yet!</p>
+            </div>
+            <a class="btn btn--form preferences" routerLink="/user">Create new booking!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,60 @@
+<div id="profile-edit-area">
+    <div>
+        <div id="edit-area-left">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="file"><i class="fa-solid fa-cloud-arrow-up"></i></label>
+                            <input type="file" name="file" id="file" class="profileInputBox avatar" (change)="onFileSelect($event)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">price:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="flight.price" placeholder="$"/></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">planeId:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="flight.planeId" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">routeId:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="flight.routeId" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">route number:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="flight.routeNumber" /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="edit-area-right">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="edit-title">class:</td>
+                        <td><select class="profileInputBox"
+                                [(ngModel)]="flight.flightClass">
+                                <option value="admin">business</option>
+                                <option value="user">economy</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">shipping datetime:</td>
+                        <td><input type='datetime-local' class="form-control" [(ngModel)]="flight.shippingDatetime"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="profile-edit-save">
+    <button id="editSave" (click)="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
+    <button id="editSave" (click)="onClose()"><i class="fa-solid fa-rectangle-xmark"></i></button>
+</div>

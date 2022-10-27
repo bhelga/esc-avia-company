@@ -1,0 +1,25 @@
+<div class="animated" style="display: flex; justify-content:center;">
+    <div class="card">
+        <div class="card-body" (click)="onCardClick()">
+            <h4>
+                <i class="fa-duotone fa-copy" style="margin-left: 1em;" (click)="copyBookingId($event)"></i> {{booking.status}} 
+            </h4>
+            <p>
+                <strong><i class="fa-duotone fa-copy" (click)="copyPassengerId($event)"></i> PassengerId</strong> : {{booking.passengerId}}<br>
+                <strong><i class="fa-duotone fa-copy" (click)="copyFlightId($event)"></i> FlightId</strong> : {{booking.flightId}} <br>
+            </p>
+        </div>
+        <ul>
+            <li (click)="onCardClick()"><a>
+                    <i class="fa-sharp fa-solid fa-user-pen"></i>
+                    Edit</a></li>
+            <li (click)="onDelete()"><a>
+                    <i class="fa-solid fa-user-minus"></i>
+                    Delete</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="editMode">
+        <app-edit-booking [booking]="booking" (closeEditor)="onCardClose()"></app-edit-booking>
+    </div>
+</div>

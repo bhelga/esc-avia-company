@@ -1,0 +1,79 @@
+<div id="profile-edit-area">
+    <div>
+        <div id="edit-area-left">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="file"><i class="fa-solid fa-cloud-arrow-up"></i></label>
+                            <input type="file" name="file" id="file" class="profileInputBox avatar" (change)="onFileSelect($event)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">name:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="plane.name" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">seats amount:</td>
+                        <td><input type="number" class="profileInputBox" [(ngModel)]="plane.seatsAmount" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">type:</td>
+                        <td><select class="profileInputBox"
+                                [(ngModel)]="plane.type">
+                                <option value="passenger">passenger</option>
+                                <option value="private">private</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">developer:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="plane.specifications.developer" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">producer:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="plane.specifications.producer" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">start of operation::</td>
+                        <td><input type="datetime-local" class="profileInputBox" [(ngModel)]="plane.specifications.startOfOperation" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="edit-area-right">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="edit-title">length:</td>
+                        <td><input type="number" class="profileInputBox" [(ngModel)]="plane.specifications.length" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">wingspan:</td>
+                        <td><input type="number" class="profileInputBox" [(ngModel)]="plane.specifications.wingspan" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">number of engines:</td>
+                        <td><input type="number" class="profileInputBox" [(ngModel)]="plane.specifications.numberOfEngines" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">engine type:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="plane.specifications.engineType" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">engine thrust:</td>
+                        <td><input type="number" class="profileInputBox" [(ngModel)]="plane.specifications.engineThrust" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">maximum flight speed:</td>
+                        <td><input type="number" class="profileInputBox" [(ngModel)]="plane.specifications.maximumFlightSpeed" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="profile-edit-save">
+    <button id="editSave" (click)="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
+    <button id="editSave" (click)="onClose()"><i class="fa-solid fa-rectangle-xmark"></i></button>
+</div>

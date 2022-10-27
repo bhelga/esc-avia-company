@@ -1,0 +1,48 @@
+<div style="display: flex; justify-content:center;" class="animated">
+    <div class="card">
+        <div class="card-header">
+            <img [src]="plane.avatar"
+                alt="rover" />
+        </div>
+        <div class="card-body" (click)="onCardClick()">
+            <div style="display: flex;">
+                <span class="tag tag-teal">{{plane.type}}</span>
+                <i class="fa-duotone fa-copy" style="margin-left: 1em;" (click)="copyId($event)"></i>
+            </div>
+            <h4>
+                {{plane.name}}
+            </h4>
+            <div class="card card-spec">
+                <div class="card-heder">
+                    <h5>Specifications</h5>
+                </div>
+                <p>
+                    <strong>Developer</strong> : {{plane.specifications.developer}} <br>
+                    <strong>Producer</strong> : {{plane.specifications.producer}}<br>
+                    <strong>Start Of Operation</strong> : {{plane.specifications.startOfOperation}}<br>
+                    <strong>Length</strong> : {{plane.specifications.length}}m<br>
+                    <strong>Wingspan</strong> : {{plane.specifications.wingspan}}<br>
+                    <strong>Number Of Engines</strong> : {{plane.specifications.numberOfEngines}}<br>
+                    <strong>Engine Type</strong> : {{plane.specifications.engineType}}<br>
+                    <strong>Engine Thrust</strong> : {{plane.specifications.engineThrust}}<br>
+                    <strong>Maximum Flight Speed</strong> : {{plane.specifications.maximumFlightSpeed}}<br>
+                </p>
+            </div>
+            <p>
+                <strong>Seats Amount</strong> : {{plane.seatsAmount}}
+            </p>
+        </div>
+        <ul>
+            <li (click)="onCardClick()"><a>
+                    <i class="fa-sharp fa-solid fa-user-pen"></i>
+                    Edit</a></li>
+            <li (click)="onDelete()"><a>
+                    <i class="fa-solid fa-user-minus"></i>
+                    Delete</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="editMode">
+        <app-edit-plane [plane]="plane" (closeEditor)="onCardClose()"></app-edit-plane>
+    </div>
+</div>

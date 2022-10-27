@@ -1,0 +1,110 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" routerLink="/home">ESC<span class="special">Avia</span></a>
+        <div class="container-fluidcollapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" routerLink="/user">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" routerLink="/favorites">Favorites</a>
+                </li>
+            </ul>
+            <li class="avatar nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center" [ngClass]="{'show' : showMenuEnabled}"
+                    id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false"
+                    (click)="showMenu()">
+                    <img [src]="currentUser?.avatar" class="rounded-circle" height="40" width="40" alt="Avatar"
+                        loading="lazy" />
+                </a>
+                <ul class="dropdown-menu" [ngClass]="{'show' : showMenuEnabled}"
+                    aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" routerLink="/profile">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="/edit">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+    </nav>
+</header>
+<div class="main-body">
+    <div class="booking-form" action="" id="bookingDetails">
+        <div class="container">
+            <div class="text-center">
+                <h3>Search a Flight</h3>
+                <h6>by filling up details in this form</h6>
+            </div>
+
+            <div class="single-destination">
+                <div class="trip-details destination-details d-lg-flex align-items-end">
+                    <div class="form-group">
+                        <label class="inputLabel" for="from">From</label>
+                        <input class="inputText from form-control" name="from" type="text" [(ngModel)]="landingPoint">
+                    </div>
+                    <button type="button" class="placeTo placeSwitch"><i class="fas fa-arrows-alt-h"></i></button>
+                    <div class="form-group">
+                        <label class="inputLabel" for="to">To</label>
+                        <input class="inputText to form-control" name="to" type="text" [(ngModel)]="pointOfDeparture">
+                    </div>
+                    <div class="form-group form-group-depart">
+                        <label class="inputLabel" for="depart">Depart</label>
+                        <input class="inputText inputDate form-control" name="depart" type="date"
+                            [(ngModel)]="shippingDatetime">
+                    </div>
+                    <div class="form-group">
+                        <label class="inputLabel" for="class">Class</label>
+                        <select id="select-class" class="inputText flightClass form-control" [(ngModel)]="class">
+                            <option value="business class">business class</option>
+                            <option value="economy class">economy class</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="passenger-details d-md-flex align-items-center">
+                <div class="container filter">
+                    <div style="display: flex;">
+                        <div class="card-body">
+                            <div id="price-range-form">
+                                <div class="rangeDiv">
+                                    <span id="rangeValue">{{minPrice}}$</span>
+                                    <input class="range" type="range" value="0" min="-1000" max="10000"
+                                        [(ngModel)]="minPrice" />
+                                </div>
+
+                                <div class="rangeDiv">
+                                    <span id="rangeValue">{{maxPrice}}$</span>
+                                    <input class="range" type="range" value="10000" min="-1000" max="10000"
+                                        [(ngModel)]="maxPrice" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group d-flex ml-auto align-items-center button-holder">
+                    <button class="btn btn-lg btn-success" id="bookingDetailsSubmit" (click)="onSearch()"><i
+                            class="fas fa-search"></i>
+                        Search Flights</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="results flight-container">
+        <app-flight-info-card *ngFor="let search of searched" [flight]="search.flight" [plane]="search.plane"
+            [route]="search.route"></app-flight-info-card>
+    </div>
+    <div class="text-right">
+        <pagination-controls class="pagg" (pageChange)="page = $event"></pagination-controls>
+    </div>
+
+</div>

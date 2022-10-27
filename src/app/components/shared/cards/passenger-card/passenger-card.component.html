@@ -1,0 +1,32 @@
+<div style="display: flex; justify-content:center;" class="animated">
+    <div class="card">
+        <div class="card-header">
+            <img [src]="passenger.avatar"
+                alt="rover" />
+        </div>
+        <div class="card-body" (click)="onCardClick()">
+            <div style="display: flex;">
+                <span class="tag tag-teal">{{passenger.role}}</span>   
+                <i class="fa-duotone fa-copy" style="margin-left: 1em;" (click)="copyId($event)"></i>
+            </div>
+            <h4>
+                {{passenger.firstName}} {{passenger.middleName}} {{passenger.lastName}}
+            </h4>
+            <p>
+                {{passenger.login}}
+            </p>
+        </div>
+        <ul>
+            <li (click)="onCardClick()"><a>
+                    <i class="fa-sharp fa-solid fa-user-pen"></i>
+                    Edit</a></li>
+            <li (click)="onDelete()"><a>
+                    <i class="fa-solid fa-user-minus"></i>
+                    Delete</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="editMode">
+        <app-edit-passenger [passenger]="passenger" (closeEditor)="onCardClose()"></app-edit-passenger>
+    </div>
+</div>

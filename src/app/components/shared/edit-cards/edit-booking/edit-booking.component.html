@@ -1,0 +1,45 @@
+<div id="profile-edit-area">
+    <div>
+        <div id="edit-area-left">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="edit-title">user id:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="booking.passengerId"/></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">flightId:</td>
+                        <td><input type="text" class="profileInputBox" [(ngModel)]="booking.flightId" /></td>
+                    </tr>
+                    <tr>
+                        <td class="edit-title">status:</td>
+                        <td><select class="profileInputBox"
+                            [(ngModel)]="booking.status">
+                            <option value="Waiting for approval">Waiting for approval</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Denied">Denied</option>
+                        </select></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div id="edit-area-right">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="edit-title">shipping datetime:</td>
+                        <td><input type='datetime-local' class="form-control" [(ngModel)]="flight.shippingDatetime"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    </div>
+</div>
+
+<div id="profile-edit-save">
+    <button id="editSave" (click)="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
+    <button id="editSave" (click)="onClose()"><i class="fa-solid fa-rectangle-xmark"></i></button>
+</div>
